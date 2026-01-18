@@ -3,10 +3,11 @@ import java.util.Scanner;
 
 public class Prithee {
 
-    static void main(String[] args) {
-        Scanner scan= new Scanner(System.in); //setting up for user input
-        Random rand= new Random(); // setting up for random index
-        String sonnet=  "Two households, both alike in dignity, " +
+    public static void main(String[] args) {
+        runTests();
+        Scanner scan = new Scanner(System.in); //setting up for user input
+        Random rand = new Random(); // setting up for random index
+        String sonnet = "Two households, both alike in dignity, " +
                 "In fair Verona, where we lay our scene, " +
                 "From ancient grudge break to new mutiny, " +
                 "Where civil blood makes civil hands unclean. " +
@@ -20,10 +21,10 @@ public class Prithee {
                 "Is now the two hours’ traffic of our stage; " +
                 "The which if you with patient ears attend, " +
                 "What here shall miss, our toil shall strive to mend."; //could be replaced with something to make it not fixed
-        String[] sonnetWords=sonnet.split(" ");//split text @ spaces
-        int correct=0;//initialize # of correct
-        int incorrect=0;//initialize # of incorrect
-        int prevIndex=-1;// initialize previous index
+        String[] sonnetWords = sonnet.split(" ");//split text @ spaces
+        int correct = 0;//initialize # of correct
+        int incorrect = 0;//initialize # of incorrect
+        int prevIndex = -1;// initialize previous index
         int index;
         while (true) { //generate index greater than previous
             do {
@@ -41,7 +42,8 @@ public class Prithee {
             System.out.println();
             System.out.print("Guess the hidden word: ");  //ask for user input
             String guess = scan.nextLine();
-            if (guess.equals(hiddenWord)) {//if input is the same as hidden word
+            if (isCorrectGuess(guess, hiddenWord)) {
+                //if input is the same as hidden word
                 correct++; //print correct and increase correct
                 System.out.println("Correct!");
             } else {
@@ -66,6 +68,37 @@ public class Prithee {
         scan.close();
 
 
-
     }
+
+    public static boolean isCorrectGuess(String guess, String hiddenWord) {
+        return guess.equals(hiddenWord);
+    }
+
+    public static void runTests() {
+        System.out.println("Running tests...");
+
+        // test 1: exact match should be true
+        if (isCorrectGuess("Two", "Two")) {
+            System.out.println("Test 1 passed");
+        } else {
+            System.out.println("Test 1 FAILED");
+        }
+
+        // test 2: mismatch should be false
+        if (!isCorrectGuess("Three", "Two")) {
+            System.out.println("Test 2 passed");
+        } else {
+            System.out.println("Test 2 FAILED");
+        }
+
+        // test 3: punctuation matters (expected false)
+        if (!isCorrectGuess("dignity", "dignity,")) {
+            System.out.println("Test 3 passed!!");
+        } else {
+            System.out.println("Test 3 FAILED!!");
+        }
+
+        System.out.println("Tests complete!\n");
+    }
+
 }
