@@ -31,8 +31,7 @@ public class Prithee {
             return null; // honestly not sure if this is the best way to go about it
         }
         previousIndex = index; //set prev index
-        int index = start + rand.nextInt(words.length - start); // get next random word
-
+        index = start + rand.nextInt(words.length - start); // get next random word
 
         return words[index];
     }

@@ -32,12 +32,12 @@ public class Main {
         // IMPORTANT: split the SAME way Prithee does
          String[] words = sonnet.split(" ");
 
-        // Print words BEFORE the blank
+        // print words BEFORE the blank
          for (int i = 0; i < wordIndex; i++) {
              System.out.println(words[i] + " ");
          }
 
-        // Print blank and STOP
+        // print blank and STOP
          System.out.println("_".repeat(word.length()));
         // Create blanks based on word length
         String blanks = "_".repeat(word.length());
